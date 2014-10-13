@@ -1,0 +1,64 @@
+*, *:after, *:before {
+  box-sizing: border-box;
+}
+
+html{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+body {
+    margin: 0;
+    padding: 10px;
+    height: 100%;
+
+    &.drag {
+        border: 2px dashed #000;
+    }
+}
+
+.json_tree {
+
+    ul {
+        padding-left: 10px;
+    }
+
+    li {
+        list-style: none;
+        position: relative;
+        margin: 0;
+        padding: 2px 10px;
+
+        .keyName {
+            margin-right: 10px;
+            &:after { content: ":"; }
+        }
+
+        .desc {
+            color: #D7D5D8;
+            font-size: 80%;
+        }
+
+        .value {
+            border-bottom: 1px dotted #000;
+        }
+        &.number .value { color: #5347FF; }
+        &.boolean .value { color: #8481FF; }
+        &.null .value { color: #C72DFF; }
+
+        &.expandable {
+            > ul { display: none; }
+            &:before {
+                content: "\25B6";
+                position: absolute;
+                left: -3px;
+            }
+        }
+        &.expanded {
+            > ul { display: block; }
+            &:before {
+                content: "\25BC";
+            }
+        }
+    }
+}
